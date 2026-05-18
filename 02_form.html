@@ -14,8 +14,29 @@
     <form>
         <!-- input name 안붙이면 주소창을 통해 전달 x-->
         <input/><br>
+        유저이름 : <input name="username"/><br>
+        비밀번호 : <input name="password"/><br>
+        <button> 제출</button><br><br>
+
+        <!-- 라벨로 묶는 방식-->
+        <label for="">유저이름</label>
         <input name="username"/><br>
-        <button> 제출</button>
+        <label for="">비밀번호</label>
+        <input name="password"/><br>
+        <button> 제출</button><br>
+
+        <label>유저이름:<input name="username" /> <br/></label><br>
+        <label>비밀번호:
+            <input 
+            type="password" 
+            name="password"
+            placeholder="암호를 입력해주세요" 
+            /> <br/></label><br><button>제출</button>
+        
+    </form>
+
+    <form action="https://search.naver.com/search.naver" method="get">
+        
     </form>
 </body>
 </html>
