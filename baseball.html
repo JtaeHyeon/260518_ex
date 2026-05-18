@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>야구 이야기 & 삼성 라이온즈 ⚾</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- Open Graph tags for premium feel -->
+    <meta property="og:title" content="TH의 야구 & 삼성 라이온즈 이야기" />
+    <meta property="og:description" content="내가 가장 사랑하는 스포츠 야구와 최강삼성 라이온즈 소개 페이지!" />
+    <meta property="og:image" content="./og_preview.png" />
+
+    <style>
+      :root {
+        --lions-blue: #074CA1;
+        --lions-blue-dark: #05336d;
+        --lions-blue-light: #e6f0fa;
+        --lions-silver: #cbd5e1;
+        --lions-gold: #eab308;
+        --text-dark: #1e293b;
+        --text-muted: #64748b;
+        --bg-color: #f8fafc;
+        --white: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Noto Sans KR', 'Outfit', sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-dark);
+        line-height: 1.6;
+        padding: 0 0 80px 0;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(135deg, var(--lions-blue) 0%, var(--lions-blue-dark) 100%);
+        color: var(--white);
+        padding: 80px 20px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(7, 76, 161, 0.15);
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 10.01%);
+        background-size: 20px 20px;
+        opacity: 0.3;
+      }
+
+      .hero-tag {
+        font-family: 'Outfit', sans-serif;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 6px 16px;
+        border-radius: 50px;
+        display: inline-block;
+        margin-bottom: 16px;
+        backdrop-filter: blur(5px);
+        font-weight: 600;
+      }
+
+      .hero h1 {
+        font-size: 2.8rem;
+        font-weight: 900;
+        margin-bottom: 12px;
+        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        font-weight: 300;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* Main Layout Container */
+      .container {
+        max-width: 1100px;
+        margin: 40px auto 0;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          grid-template-columns: 1fr;
+        }
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+      }
+
+      /* Card Styling */
+      .card {
+        background-color: var(--white);
+        border-radius: 20px;
+        padding: 35px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(7, 76, 161, 0.08);
+      }
+
+      .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background-color: var(--lions-blue);
+      }
+
+      .card-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+      }
+
+      .card-icon {
+        font-size: 2rem;
+        margin-right: 15px;
+        background-color: var(--lions-blue-light);
+        width: 55px;
+        height: 55px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 14px;
+        color: var(--lions-blue);
+      }
+
+      .card h2 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--lions-blue-dark);
+      }
+
+      /* Base Rules Styles */
+      .rules-list {
+        list-style: none;
+      }
+
+      .rules-item {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 20px;
+      }
+
+      .rules-item::before {
+        content: "⚾";
+        position: absolute;
+        left: 0;
+        top: 2px;
+        font-size: 1.1rem;
+      }
+
+      .rules-item h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 4px;
+        color: var(--text-dark);
+      }
+
+      .rules-item p {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+      }
+
+      /* Samsung Lions Pride Styles */
+      .pride-item {
+        background-color: var(--lions-blue-light);
+        border-radius: 12px;
+        padding: 18px;
+        margin-bottom: 16px;
+        border-left: 4px solid var(--lions-blue);
+      }
+
+      .pride-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .pride-item h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--lions-blue-dark);
+        margin-bottom: 6px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .pride-item h3 .badge {
+        font-size: 0.75rem;
+        background-color: var(--lions-blue);
+        color: var(--white);
+        padding: 3px 8px;
+        border-radius: 50px;
+        font-family: 'Outfit', sans-serif;
+      }
+
+      .pride-item p {
+        font-size: 0.95rem;
+        color: var(--text-dark);
+      }
+
+      /* CTA Back Button */
+      .btn-container {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      .btn-back {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--lions-blue);
+        color: var(--white);
+        text-decoration: none;
+        padding: 14px 32px;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 1.05rem;
+        box-shadow: 0 4px 15px rgba(7, 76, 161, 0.25);
+        transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+      }
+
+      .btn-back:hover {
+        background-color: var(--lions-blue-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(7, 76, 161, 0.35);
+      }
+
+      .btn-back svg {
+        margin-right: 8px;
+        fill: currentColor;
+        transition: transform 0.2s;
+      }
+
+      .btn-back:hover svg {
+        transform: translateX(-4px);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero Header -->
+    <header class="hero">
+      <span class="hero-tag">My Favorite Sport</span>
+      <h1>나의 야구 이야기</h1>
+      <p>그라운드 위에서 흐르는 땀방울과 각본 없는 드라마, 그리고 내가 가장 사랑하는 팀 '최강삼성 라이온즈'를 소개합니다.</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+      <!-- Section 1: 야구의 기본적인 룰 -->
+      <section class="card">
+        <div class="card-header">
+          <div class="card-icon">⚾</div>
+          <h2>야구의 기본적인 규칙</h2>
+        </div>
+        <ul class="rules-list">
+          <li class="rules-item">
+            <h3>9이닝 경기 방식</h3>
+            <p>야구는 양 팀이 9회(이닝) 동안 공격과 수비를 번갈아가며 진행합니다. 각 이닝마다 3개의 아웃 카운트를 잡으면 공수가 교대됩니다.</p>
+          </li>
+          <li class="rules-item">
+            <h3>투수와 타자의 승부</h3>
+            <p>투수가 던진 공을 타자가 쳐서 페어 영역 안으로 보내고 1루, 2루, 3루를 거쳐 홈(본루)으로 다시 돌아오면 1점을 획득합니다.</p>
+          </li>
+          <li class="rules-item">
+            <h3>스트라이크와 볼</h3>
+            <p>투수가 스트라이크 존에 넣은 공을 타자가 치지 못하거나 헛스윙하면 스트라이크(3개면 삼진 아웃), 스트라이크 존을 벗어난 공을 타자가 치지 않으면 볼(4개면 볼넷으로 1루 진루)이 됩니다.</p>
+          </li>
+          <li class="rules-item">
+            <h3>포지션 구성</h3>
+            <p>수비 팀은 경기장에 투수, 포수, 내야수 4명(1루수, 2루수, 3루수, 유격수), 외야수 3명(좌익수, 중견수, 우익수) 등 총 9명의 선수가 각 위치에서 수비를 펼칩니다.</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Section 2: 삼성 라이온즈의 자랑 -->
+      <section class="card">
+        <div class="card-header">
+          <div class="card-icon">🦁</div>
+          <h2>최강삼성 라이온즈의 자랑</h2>
+        </div>
+        
+        <div class="pride-item">
+          <h3>KBO 명문 구단 <span class="badge">V8</span></h3>
+          <p>삼성 라이온즈는 KBO 리그 통산 8회 우승(1985, 2002, 2005, 2006, 2011, 2012, 2013, 2014)을 달성한 전통의 강호입니다. 특히 2011년부터 2014년까지는 통합 4연패라는 전무후무한 대기록을 썼습니다.</p>
+        </div>
+
+        <div class="pride-item">
+          <h3>대구 삼성 라이온즈 파크 (라팍) <span class="badge">STADIUM</span></h3>
+          <p>2016년에 개장한 홈구장 '라팍'은 대한민국 최초의 팔각 다이아몬드형 야구장입니다. 탁 트인 시야, 선수들을 가까이서 볼 수 있는 익사이팅존, 그리고 다양하고 맛있는 먹거리가 자랑거리입니다.</p>
+        </div>
+
+        <div class="pride-item">
+          <h3>전설적인 선수들 (Legends) <span class="badge">HERO</span></h3>
+          <p>'라이언 킹' 이승엽(현 두산 감독, 통산 최다 홈런), '양준혁'(최초 2000안타), 그리고 여전히 마운드를 지키고 있는 KBO 끝판왕 '오승환' 등 수많은 한국 야구의 영웅들을 배출한 명가입니다.</p>
+        </div>
+
+        <div class="pride-item">
+          <h3>열정적인 응원 문화 <span class="badge">EL DORADO</span></h3>
+          <p>삼성 라이온즈 팬들의 시그니처 응원가 '엘도라도(El Dorado)'와 파란 물결의 응원 타월이 만드는 열광적인 분위기는 라팍에 온 누구나 야구의 매력에 푹 빠지게 만듭니다.</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Navigation Back Button -->
+    <div class="btn-container">
+      <a href="index.html" class="btn-back">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+        </svg>
+        포트폴리오 홈으로 돌아가기
+      </a>
+    </div>
+  </body>
+</html>
