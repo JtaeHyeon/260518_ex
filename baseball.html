@@ -3,31 +3,66 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>야구 이야기 & 삼성 라이온즈 ⚾</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <title>⚾ Blue Soul: 야구 & 삼성 라이온즈</title>
 
-    <!-- Open Graph tags for premium feel -->
-    <meta property="og:title" content="TH의 야구 & 삼성 라이온즈 이야기" />
-    <meta property="og:description" content="내가 가장 사랑하는 스포츠 야구와 최강삼성 라이온즈 소개 페이지!" />
-    <meta property="og:image" content="./og_preview.png" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
-      :root {
-        --lions-blue: #074CA1;
-        --lions-blue-dark: #05336d;
-        --lions-blue-light: #e6f0fa;
-        --lions-silver: #cbd5e1;
-        --lions-gold: #eab308;
-        --text-dark: #1e293b;
-        --text-muted: #64748b;
-        --bg-color: #f8fafc;
-        --white: #ffffff;
+      /* Fonts */
+      @font-face {
+        font-family: "Cafe24Surround";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff")
+          format("woff");
+        font-weight: normal;
+        font-display: swap;
       }
 
+      @font-face {
+        font-family: "KkuBulLim";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2410-1@1.0/BMkkubulimTTF-Regular.woff2")
+          format("woff2");
+        font-weight: normal;
+        font-display: swap;
+      }
+
+      /* Core Design System Tokens */
+      :root {
+        --primary: #074ca1; /* Samsung Royal Blue */
+        --primary-glow: rgba(7, 76, 161, 0.4);
+        --primary-light: #2563eb;
+        --secondary: #e5e8eb; /* Silver White */
+        --accent: #c8102e; /* Crimson Red */
+        --accent-glow: rgba(200, 16, 46, 0.4);
+        --bg-color: #030712; /* Deep Obsidian Black */
+        --card-bg: rgba(255, 255, 255, 0.03);
+        --card-border: rgba(255, 255, 255, 0.08);
+        --text-primary: #f9fafb;
+        --text-secondary: #9ca3af;
+        --text-muted: #6b7280;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #030712;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #1f2937;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--primary);
+      }
+
+      /* Reset & Base Styles */
       * {
         box-sizing: border-box;
         margin: 0;
@@ -35,315 +70,818 @@
       }
 
       body {
-        font-family: 'Noto Sans KR', 'Outfit', sans-serif;
+        font-family: "Inter", -apple-system, sans-serif;
         background-color: var(--bg-color);
-        color: var(--text-dark);
+        background-image: 
+          radial-gradient(circle at 10% 20%, rgba(7, 76, 161, 0.15) 0%, transparent 40%),
+          radial-gradient(circle at 90% 80%, rgba(200, 16, 46, 0.08) 0%, transparent 40%);
+        color: var(--text-primary);
         line-height: 1.6;
-        padding: 0 0 80px 0;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        font-family: "Cafe24Surround", sans-serif;
+      }
+
+      p, li, span, a {
+        font-family: "Inter", sans-serif;
+      }
+
+      /* Header / Navigation */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        background: rgba(3, 7, 18, 0.6);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--card-border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 40px;
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+
+      .nav-logo {
+        font-size: 1.25rem;
+        color: var(--text-primary);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: "Outfit", "Cafe24Surround", sans-serif;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+      }
+
+      .nav-logo span {
+        color: var(--primary-light);
+      }
+
+      .back-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        border-radius: 30px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--card-border);
+        color: var(--text-primary);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .back-btn:hover {
+        background: rgba(7, 76, 161, 0.15);
+        border-color: rgba(7, 76, 161, 0.3);
+        transform: translateX(-4px);
+        box-shadow: 0 0 15px var(--primary-glow);
+      }
+
+      /* Main Layout */
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 120px 24px 80px 24px;
       }
 
       /* Hero Section */
       .hero {
-        background: linear-gradient(135deg, var(--lions-blue) 0%, var(--lions-blue-dark) 100%);
-        color: var(--white);
-        padding: 80px 20px;
         text-align: center;
+        margin-bottom: 100px;
         position: relative;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(7, 76, 161, 0.15);
       }
 
       .hero::before {
-        content: '';
+        content: "";
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 10.01%);
-        background-size: 20px 20px;
-        opacity: 0.3;
+        top: -50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        height: 300px;
+        background: var(--primary);
+        filter: blur(150px);
+        opacity: 0.25;
+        pointer-events: none;
+        z-index: -1;
       }
 
       .hero-tag {
-        font-family: 'Outfit', sans-serif;
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        background-color: rgba(255, 255, 255, 0.2);
-        padding: 6px 16px;
-        border-radius: 50px;
         display: inline-block;
-        margin-bottom: 16px;
-        backdrop-filter: blur(5px);
+        padding: 6px 16px;
+        background: linear-gradient(90deg, rgba(7, 76, 161, 0.15), rgba(200, 16, 46, 0.15));
+        border: 1px solid rgba(7, 76, 161, 0.3);
+        border-radius: 100px;
+        font-size: 0.85rem;
         font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 24px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
       }
 
       .hero h1 {
-        font-size: 2.8rem;
+        font-size: 3.5rem;
+        font-family: "Outfit", "Cafe24Surround", sans-serif;
         font-weight: 900;
-        margin-bottom: 12px;
-        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        line-height: 1.15;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 60%, var(--primary-light));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
 
       .hero p {
-        font-size: 1.2rem;
-        opacity: 0.9;
-        font-weight: 300;
+        font-size: 1.15rem;
+        color: var(--text-secondary);
         max-width: 600px;
         margin: 0 auto;
+        font-weight: 400;
       }
 
-      /* Main Layout Container */
-      .container {
-        max-width: 1100px;
-        margin: 40px auto 0;
-        padding: 0 20px;
+      /* Section Common Header */
+      .section-header {
+        margin-bottom: 40px;
+        border-left: 4px solid var(--primary);
+        padding-left: 16px;
+      }
+
+      .section-header h2 {
+        font-size: 2rem;
+        color: var(--text-primary);
+        font-weight: 800;
+        margin-bottom: 8px;
+        letter-spacing: -0.5px;
+      }
+
+      .section-header p {
+        color: var(--text-secondary);
+        font-size: 1rem;
+      }
+
+      /* Grid System */
+      .rules-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 24px;
+        margin-bottom: 100px;
       }
 
-      @media (max-width: 768px) {
-        .container {
-          grid-template-columns: 1fr;
-        }
-        .hero h1 {
-          font-size: 2.2rem;
-        }
-      }
-
-      /* Card Styling */
+      /* Premium Card Style */
       .card {
-        background-color: var(--white);
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
         border-radius: 20px;
-        padding: 35px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        border: 1px solid rgba(0, 0, 0, 0.05);
+        padding: 32px;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         position: relative;
         overflow: hidden;
       }
 
-      .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 35px rgba(7, 76, 161, 0.08);
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
+        pointer-events: none;
       }
 
-      .card::before {
-        content: '';
+      .card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(7, 76, 161, 0.3);
+        box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 20px rgba(7, 76, 161, 0.15);
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .card-icon {
+        width: 48px;
+        height: 48px;
+        background: rgba(7, 76, 161, 0.1);
+        border: 1px solid rgba(7, 76, 161, 0.2);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 24px;
+        color: var(--primary-light);
+        transition: all 0.3s ease;
+      }
+
+      .card:hover .card-icon {
+        background: var(--primary);
+        color: white;
+        transform: scale(1.1);
+        box-shadow: 0 0 15px var(--primary-glow);
+      }
+
+      .card h3 {
+        font-size: 1.35rem;
+        color: var(--text-primary);
+        margin-bottom: 12px;
+        font-weight: 700;
+      }
+
+      .card p {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      /* Rule badges inside cards */
+      .rule-badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-top: 16px;
+      }
+      .badge-blue {
+        background: rgba(7, 76, 161, 0.15);
+        color: #93c5fd;
+        border: 1px solid rgba(7, 76, 161, 0.3);
+      }
+      .badge-red {
+        background: rgba(200, 16, 46, 0.15);
+        color: #fca5a5;
+        border: 1px solid rgba(200, 16, 46, 0.3);
+      }
+
+      /* Samsung Lions Pride Section */
+      .pride-section {
+        margin-bottom: 100px;
+      }
+
+      /* Timeline Component */
+      .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto 80px auto;
+        padding: 20px 0;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 2px;
+        background: linear-gradient(180deg, var(--primary), var(--accent));
+        transform: translateX(-50%);
+        opacity: 0.3;
+      }
+
+      .timeline-item {
+        margin-bottom: 40px;
+        position: relative;
+        width: 50%;
+        padding: 0 40px;
+        transition: all 0.3s ease;
+      }
+
+      .timeline-item:nth-child(odd) {
+        left: 0;
+        text-align: right;
+      }
+
+      .timeline-item:nth-child(even) {
+        left: 50%;
+        text-align: left;
+      }
+
+      .timeline-badge {
+        position: absolute;
+        top: 4px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: var(--bg-color);
+        border: 3px solid var(--primary);
+        z-index: 1;
+        transition: all 0.3s ease;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-badge {
+        right: -8px;
+      }
+
+      .timeline-item:nth-child(even) .timeline-badge {
+        left: -8px;
+        border-color: var(--accent);
+      }
+
+      .timeline-item:hover .timeline-badge {
+        background: var(--text-primary);
+        transform: scale(1.3);
+        box-shadow: 0 0 10px var(--primary-glow);
+      }
+
+      .timeline-content {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        padding: 24px;
+        border-radius: 16px;
+        backdrop-filter: blur(8px);
+        display: inline-block;
+        width: 100%;
+        transition: all 0.3s ease;
+      }
+
+      .timeline-item:hover .timeline-content {
+        border-color: rgba(255, 255, 255, 0.15);
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .timeline-year {
+        font-family: "Outfit", sans-serif;
+        font-weight: 800;
+        font-size: 1.5rem;
+        color: var(--primary-light);
+        margin-bottom: 6px;
+      }
+      .timeline-item:nth-child(even) .timeline-year {
+        color: #ef4444;
+      }
+
+      .timeline-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .timeline-desc {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+      }
+
+      /* Lions Park Octagon Layout */
+      .park-showcase {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 40px;
+        align-items: center;
+        background: linear-gradient(135deg, rgba(7, 76, 161, 0.08) 0%, rgba(3, 7, 18, 0.6) 100%);
+        border: 1px solid rgba(7, 76, 161, 0.2);
+        border-radius: 30px;
+        padding: 48px;
+        margin-bottom: 100px;
+        backdrop-filter: blur(12px);
+      }
+
+      .park-content h3 {
+        font-size: 1.75rem;
+        margin-bottom: 16px;
+        color: var(--text-primary);
+      }
+
+      .park-content p {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+        line-height: 1.7;
+      }
+
+      .park-features {
+        list-style: none;
+      }
+
+      .park-features li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+        font-size: 0.9rem;
+        color: var(--text-primary);
+        font-weight: 500;
+      }
+
+      .park-features li::before {
+        content: "✓";
+        color: var(--primary-light);
+        font-weight: 900;
+      }
+
+      .park-visual {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* SVG Octagon Art representing Stadium */
+      .octagon-graphic {
+        width: 300px;
+        height: 300px;
+        filter: drop-shadow(0 0 20px var(--primary-glow));
+        animation: rotateStadium 20s linear infinite;
+      }
+
+      @keyframes rotateStadium {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+
+      .park-stat-card {
+        position: absolute;
+        background: rgba(3, 7, 18, 0.85);
+        border: 1px solid var(--primary);
+        border-radius: 12px;
+        padding: 16px;
+        backdrop-filter: blur(8px);
+        text-align: center;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .stat-val {
+        font-family: "Outfit", sans-serif;
+        font-weight: 800;
+        font-size: 1.5rem;
+        color: var(--primary-light);
+      }
+
+      .stat-lbl {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+      }
+
+      /* Legend Grid */
+      .legends-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+      }
+
+      .legend-card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 20px;
+        padding: 24px;
+        text-align: center;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .legend-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(200, 16, 46, 0.3);
+        box-shadow: 0 15px 30px rgba(200, 16, 46, 0.1);
+      }
+
+      .legend-card::before {
+        content: "";
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 6px;
-        background-color: var(--lions-blue);
+        background: linear-gradient(90deg, var(--primary), var(--accent));
       }
 
-      .card-header {
-        display: flex;
-        align-items: center;
-        margin-bottom: 25px;
+      .legend-jersey {
+        font-family: "Outfit", sans-serif;
+        font-weight: 900;
+        font-size: 3rem;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.01) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: -10px;
+        line-height: 1;
       }
 
-      .card-icon {
-        font-size: 2rem;
-        margin-right: 15px;
-        background-color: var(--lions-blue-light);
-        width: 55px;
-        height: 55px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 14px;
-        color: var(--lions-blue);
-      }
-
-      .card h2 {
-        font-size: 1.6rem;
+      .legend-name {
+        font-size: 1.25rem;
         font-weight: 700;
-        color: var(--lions-blue-dark);
-      }
-
-      /* Base Rules Styles */
-      .rules-list {
-        list-style: none;
-      }
-
-      .rules-item {
-        position: relative;
-        padding-left: 30px;
-        margin-bottom: 20px;
-      }
-
-      .rules-item::before {
-        content: "⚾";
-        position: absolute;
-        left: 0;
-        top: 2px;
-        font-size: 1.1rem;
-      }
-
-      .rules-item h3 {
-        font-size: 1.1rem;
-        font-weight: 700;
-        margin-bottom: 4px;
-        color: var(--text-dark);
-      }
-
-      .rules-item p {
-        font-size: 0.95rem;
-        color: var(--text-muted);
-      }
-
-      /* Samsung Lions Pride Styles */
-      .pride-item {
-        background-color: var(--lions-blue-light);
-        border-radius: 12px;
-        padding: 18px;
-        margin-bottom: 16px;
-        border-left: 4px solid var(--lions-blue);
-      }
-
-      .pride-item:last-child {
-        margin-bottom: 0;
-      }
-
-      .pride-item h3 {
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: var(--lions-blue-dark);
         margin-bottom: 6px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        color: var(--text-primary);
       }
 
-      .pride-item h3 .badge {
-        font-size: 0.75rem;
-        background-color: var(--lions-blue);
-        color: var(--white);
-        padding: 3px 8px;
-        border-radius: 50px;
-        font-family: 'Outfit', sans-serif;
+      .legend-role {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 16px;
       }
 
-      .pride-item p {
-        font-size: 0.95rem;
-        color: var(--text-dark);
+      .legend-desc {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
       }
 
-      /* CTA Back Button */
-      .btn-container {
+      /* Call to Action Footer */
+      .cta-footer {
+        margin-top: 100px;
+        background: linear-gradient(135deg, rgba(7, 76, 161, 0.15) 0%, rgba(200, 16, 46, 0.1) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 24px;
+        padding: 60px 40px;
         text-align: center;
-        margin-top: 50px;
+        position: relative;
+        backdrop-filter: blur(12px);
       }
 
-      .btn-back {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        background-color: var(--lions-blue);
-        color: var(--white);
-        text-decoration: none;
-        padding: 14px 32px;
-        border-radius: 50px;
-        font-weight: 700;
+      .cta-footer h3 {
+        font-size: 2rem;
+        margin-bottom: 16px;
+      }
+
+      .cta-footer p {
+        color: var(--text-secondary);
         font-size: 1.05rem;
-        box-shadow: 0 4px 15px rgba(7, 76, 161, 0.25);
-        transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+        max-width: 600px;
+        margin: 0 auto 32px auto;
       }
 
-      .btn-back:hover {
-        background-color: var(--lions-blue-dark);
+      .cta-btn {
+        display: inline-block;
+        padding: 14px 32px;
+        background: linear-gradient(135deg, var(--primary), var(--primary-light));
+        border: none;
+        border-radius: 30px;
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        box-shadow: 0 4px 15px var(--primary-glow);
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .cta-btn:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(7, 76, 161, 0.35);
+        box-shadow: 0 8px 25px var(--primary-glow);
+        background: linear-gradient(135deg, var(--primary-light), #3b82f6);
       }
 
-      .btn-back svg {
-        margin-right: 8px;
-        fill: currentColor;
-        transition: transform 0.2s;
-      }
+      /* Responsive Design adjustments */
+      @media (max-width: 768px) {
+        header {
+          padding: 0 20px;
+        }
 
-      .btn-back:hover svg {
-        transform: translateX(-4px);
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .timeline::before {
+          left: 30px;
+        }
+
+        .timeline-item {
+          width: 100%;
+          padding-left: 60px;
+          padding-right: 20px;
+        }
+
+        .timeline-item:nth-child(odd) {
+          left: 0;
+          text-align: left;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-badge,
+        .timeline-item:nth-child(even) .timeline-badge {
+          left: 22px;
+        }
+
+        .park-showcase {
+          grid-template-columns: 1fr;
+          padding: 24px;
+        }
+
+        .octagon-graphic {
+          width: 200px;
+          height: 200px;
+        }
       }
     </style>
   </head>
   <body>
-    <!-- Hero Header -->
-    <header class="hero">
-      <span class="hero-tag">My Favorite Sport</span>
-      <h1>나의 야구 이야기</h1>
-      <p>그라운드 위에서 흐르는 땀방울과 각본 없는 드라마, 그리고 내가 가장 사랑하는 팀 '최강삼성 라이온즈'를 소개합니다.</p>
+    <!-- Top Floating Header -->
+    <header>
+      <a href="index.html" class="nav-logo">
+        ⚾ LIONS<span>PRIDE</span>
+      </a>
+      <a href="index.html" class="back-btn">
+        ← Portfolio
+      </a>
     </header>
 
-    <!-- Main Content -->
-    <main class="container">
-      <!-- Section 1: 야구의 기본적인 룰 -->
-      <section class="card">
-        <div class="card-header">
-          <div class="card-icon">⚾</div>
-          <h2>야구의 기본적인 규칙</h2>
-        </div>
-        <ul class="rules-list">
-          <li class="rules-item">
-            <h3>9이닝 경기 방식</h3>
-            <p>야구는 양 팀이 9회(이닝) 동안 공격과 수비를 번갈아가며 진행합니다. 각 이닝마다 3개의 아웃 카운트를 잡으면 공수가 교대됩니다.</p>
-          </li>
-          <li class="rules-item">
-            <h3>투수와 타자의 승부</h3>
-            <p>투수가 던진 공을 타자가 쳐서 페어 영역 안으로 보내고 1루, 2루, 3루를 거쳐 홈(본루)으로 다시 돌아오면 1점을 획득합니다.</p>
-          </li>
-          <li class="rules-item">
-            <h3>스트라이크와 볼</h3>
-            <p>투수가 스트라이크 존에 넣은 공을 타자가 치지 못하거나 헛스윙하면 스트라이크(3개면 삼진 아웃), 스트라이크 존을 벗어난 공을 타자가 치지 않으면 볼(4개면 볼넷으로 1루 진루)이 됩니다.</p>
-          </li>
-          <li class="rules-item">
-            <h3>포지션 구성</h3>
-            <p>수비 팀은 경기장에 투수, 포수, 내야수 4명(1루수, 2루수, 3루수, 유격수), 외야수 3명(좌익수, 중견수, 우익수) 등 총 9명의 선수가 각 위치에서 수비를 펼칩니다.</p>
-          </li>
-        </ul>
+    <!-- Main Content Container -->
+    <main>
+      <!-- Hero Header Section -->
+      <section class="hero">
+        <div class="hero-tag">SAMSUNG LIONS FAN PAGE</div>
+        <h1>THE BLUE SOUL</h1>
+        <p>
+          푸른 투혼의 야구정신과 찬란한 역사. 삼성을 향한 뜨거운 열정과 야구의 매력을 소개합니다.
+        </p>
       </section>
 
-      <!-- Section 2: 삼성 라이온즈의 자랑 -->
-      <section class="card">
-        <div class="card-header">
-          <div class="card-icon">🦁</div>
-          <h2>최강삼성 라이온즈의 자랑</h2>
+      <!-- Section 1: Baseball Rules -->
+      <section style="margin-bottom: 100px;">
+        <div class="section-header">
+          <h2>야구의 규칙 (Rules)</h2>
+          <p>9명의 플레이어가 하나 되어 만들어가는 기적, 야구의 기본 룰</p>
         </div>
+
+        <div class="rules-grid">
+          <!-- Card 1 -->
+          <div class="card">
+            <div class="card-icon">⏱</div>
+            <h3>9이닝 경기제 (9 Innings)</h3>
+            <p>
+              야구는 총 9회(Innings)로 진행되며, 각 이닝은 초(Away 팀 공격)와 말(Home 팀 공격)로 나뉩니다. 정규 이닝 동안 더 많은 점수를 기록하는 팀이 승리하며, 동점 시 연장전으로 돌입합니다. 시간 제한이 없는 대표적인 스포츠입니다.
+            </p>
+            <span class="rule-badge badge-blue">공격 & 수비 교대</span>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="card">
+            <div class="card-icon">⚡</div>
+            <h3>3 아웃 시스템 (3 Outs)</h3>
+            <p>
+              수비팀이 3개의 아웃(Out)카운트를 잡아내면 공격과 수비가 교대됩니다. 타자가 3스트라이크를 먹거나(삼진), 친 공이 공중에서 잡히거나(플라이아웃), 베이스에 도착하기 전에 공이 주자보다 먼저 닿으면(포스/태그아웃) 아웃이 선언됩니다.
+            </p>
+            <span class="rule-badge badge-red">3아웃 공수교환</span>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="card">
+            <div class="card-icon">🎯</div>
+            <h3>스트라이크 & 볼 (S & B)</h3>
+            <p>
+              투수와 타자 간 핵심 대결 룰입니다. 스트라이크 존을 통과한 공을 타자가 치지 못하거나 헛스윙하면 스트라이크(3개 시 삼진 아웃). 벗어난 공은 볼(4개 시 볼넷으로 1루 출루)이 됩니다. 정교한 투구와 타격 감각이 중요합니다.
+            </p>
+            <span class="rule-badge badge-blue">투타 심리전</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Samsung Lions Pride -->
+      <section class="pride-section">
+        <div class="section-header">
+          <h2>삼성이란 자부심 (Lions Pride)</h2>
+          <p>한국 프로야구 명가, 삼성 라이온즈의 찬란하게 빛나는 자랑거리들</p>
+        </div>
+
+        <!-- Component: Timeline -->
+        <h3 style="text-align: center; margin-bottom: 40px; font-size: 1.5rem; color: var(--text-primary);">
+          👑 찬란했던 삼성 왕조의 역사
+        </h3>
         
-        <div class="pride-item">
-          <h3>KBO 명문 구단 <span class="badge">V8</span></h3>
-          <p>삼성 라이온즈는 KBO 리그 통산 8회 우승(1985, 2002, 2005, 2006, 2011, 2012, 2013, 2014)을 달성한 전통의 강호입니다. 특히 2011년부터 2014년까지는 통합 4연패라는 전무후무한 대기록을 썼습니다.</p>
+        <div class="timeline">
+          <!-- Item 1 -->
+          <div class="timeline-item">
+            <div class="timeline-badge"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">2011</div>
+              <div class="timeline-title">통합 우승 달성</div>
+              <div class="timeline-desc">정규시즌 및 한국시리즈 통합 우승을 일궈내며 최강 구단의 탄생을 알렸습니다.</div>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="timeline-item">
+            <div class="timeline-badge"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">2012</div>
+              <div class="timeline-title">2년 연속 통합 챔피언</div>
+              <div class="timeline-desc">철벽 투수진과 안정된 타격을 바탕으로 2년 연속 정규시즌 및 한국시리즈 통합 왕좌에 올랐습니다.</div>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="timeline-item">
+            <div class="timeline-badge"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">2013</div>
+              <div class="timeline-title">기적의 3연패 완수</div>
+              <div class="timeline-desc">패색이 짙던 한국시리즈 대역전극을 완성하며 3년 연속 왕좌를 수성했습니다.</div>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="timeline-item">
+            <div class="timeline-badge"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">2014</div>
+              <div class="timeline-title">KBO 사상 최초 4년 연속 통합 우승</div>
+              <div class="timeline-desc">전무후무한 '4년 연속 통합 우승(정규리그+한국시리즈)' 신화를 쓰며 명실상부한 '삼성 왕조'를 구축했습니다.</div>
+            </div>
+          </div>
         </div>
 
-        <div class="pride-item">
-          <h3>대구 삼성 라이온즈 파크 (라팍) <span class="badge">STADIUM</span></h3>
-          <p>2016년에 개장한 홈구장 '라팍'은 대한민국 최초의 팔각 다이아몬드형 야구장입니다. 탁 트인 시야, 선수들을 가까이서 볼 수 있는 익사이팅존, 그리고 다양하고 맛있는 먹거리가 자랑거리입니다.</p>
+        <!-- Component: Lions Park Showcase -->
+        <div class="park-showcase">
+          <div class="park-content">
+            <span style="color: var(--primary-light); font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">
+              Our Home Stadium
+            </span>
+            <h3 style="margin-top: 5px;">대구 삼성 라이온즈 파크</h3>
+            <p>
+              2016년에 개장한 '라팍'은 메이저리그 스타일의 국내 유일 8각형 다이아몬드 야구장입니다. 
+              관람객 친화적인 최고의 편의시설을 제공하며, 익사이팅한 타자 친화형 구장으로서 삼성의 역동적인 푸른 함성이 가득 차는 축제의 장입니다.
+            </p>
+            <ul class="park-features">
+              <li>메이저리그(MLB) 흙과 규격의 하이 테크놀로지 필드</li>
+              <li>국내 유일 독창적인 8각형 다이아몬드형 디자인</li>
+              <li>좌석 간의 극대화된 가깝고 생생한 시야각 구현</li>
+            </ul>
+          </div>
+          
+          <div class="park-visual">
+            <!-- Modern SVG Art representing the Octagon Field -->
+            <svg class="octagon-graphic" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <!-- Outer Octagon line -->
+              <polygon points="50,5 82,18 95,50 82,82 50,95 18,82 5,50 18,18" fill="none" stroke="#074ca1" stroke-width="2" />
+              <!-- Inner Octagon line -->
+              <polygon points="50,15 75,25 85,50 75,75 50,85 25,75 15,50 25,25" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="3 3" />
+              <!-- Pitcher mound & Bases -->
+              <polygon points="50,40 60,50 50,60 40,50" fill="none" stroke="#c8102e" stroke-width="2" />
+              <circle cx="50" cy="50" r="3" fill="#ffffff" />
+              <!-- Home Plate -->
+              <polygon points="50,75 53,78 53,82 47,82 47,78" fill="#ffffff" />
+            </svg>
+
+            <!-- Float Stat Badges -->
+            <div class="park-stat-card" style="top: 10%; right: 5%;">
+              <div class="stat-val">2016</div>
+              <div class="stat-lbl">개장 연도</div>
+            </div>
+            <div class="park-stat-card" style="bottom: 10%; left: 5%;">
+              <div class="stat-val">24,000석</div>
+              <div class="stat-lbl">수용 관중 수</div>
+            </div>
+          </div>
         </div>
 
-        <div class="pride-item">
-          <h3>전설적인 선수들 (Legends) <span class="badge">HERO</span></h3>
-          <p>'라이언 킹' 이승엽(현 두산 감독, 통산 최다 홈런), '양준혁'(최초 2000안타), 그리고 여전히 마운드를 지키고 있는 KBO 끝판왕 '오승환' 등 수많은 한국 야구의 영웅들을 배출한 명가입니다.</p>
-        </div>
+        <!-- Component: Legends Showcase -->
+        <h3 style="text-align: center; margin-bottom: 40px; font-size: 1.5rem; color: var(--text-primary);">
+          ⭐️ 푸른 피의 영원한 레전드 & 스타
+        </h3>
 
-        <div class="pride-item">
-          <h3>열정적인 응원 문화 <span class="badge">EL DORADO</span></h3>
-          <p>삼성 라이온즈 팬들의 시그니처 응원가 '엘도라도(El Dorado)'와 파란 물결의 응원 타월이 만드는 열광적인 분위기는 라팍에 온 누구나 야구의 매력에 푹 빠지게 만듭니다.</p>
+        <div class="legends-grid">
+          <!-- Legend 1 -->
+          <div class="legend-card">
+            <div class="legend-jersey">36</div>
+            <h4 class="legend-name">이승엽</h4>
+            <div class="legend-role">라이언 킹 (국민타자)</div>
+            <p class="legend-desc">
+              아시아 단일 시즌 최다 홈런(56홈런)의 대기록 보유자이자, 결정적인 순간 대한민국과 삼성을 구원했던 영원한 홈런왕. 삼성 라이온즈의 대표적인 영구결번 레전드입니다.
+            </p>
+          </div>
+
+          <!-- Legend 2 -->
+          <div class="legend-card">
+            <div class="legend-jersey">10</div>
+            <h4 class="legend-name">양준혁</h4>
+            <div class="legend-role">푸른 피의 에이스</div>
+            <p class="legend-desc">
+              KBO 역사상 최초의 2천 안타 돌파자이자, 영원히 1루로 전력 질주하며 투혼을 보여준 만세 타자. 은퇴 후에도 삼성의 정신적인 지주로서 팬들의 뜨거운 지지를 받습니다.
+            </p>
+          </div>
+
+          <!-- Legend 3 -->
+          <div class="legend-card">
+            <div class="legend-jersey">21</div>
+            <h4 class="legend-name">오승환</h4>
+            <div class="legend-role">끝판대장 (돌부처)</div>
+            <p class="legend-desc">
+              KBO 역사상 최다 세이브의 주역이자 한국 야구 사상 최고의 마무리 투수. 묵직하고 강력한 돌직구와 흔들리지 않는 포커페이스로 삼성의 뒷문을 든든히 틀어막은 리빙 레전드입니다.
+            </p>
+          </div>
         </div>
+      </section>
+
+      <!-- Footer CTA Section -->
+      <section class="cta-footer">
+        <h3>푸른 열정은 계속됩니다</h3>
+        <p>
+          삼성 라이온즈의 파란색 유니폼에 깃든 역동성과 투혼의 이야기를 끝까지 감상해 주셔서 감사합니다. <br>
+          앞으로도 저의 성장을 푸른 라이온즈의 불꽃처럼 밝혀 가겠습니다.
+        </p>
+        <a href="index.html" class="cta-btn">포트폴리오 돌아가기</a>
       </section>
     </main>
-
-    <!-- Navigation Back Button -->
-    <div class="btn-container">
-      <a href="index.html" class="btn-back">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
-          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
-        </svg>
-        포트폴리오 홈으로 돌아가기
-      </a>
-    </div>
   </body>
 </html>
