@@ -7,13 +7,32 @@
     <style>
         p {
             color:gray;
-            
         }
+        .class-style {
+            color:green;
+        }
+        .class-style2 {
+            color:red;
+        }
+        #id-style {
+            color:yellow;
+        }
+        .class-style3 {
+            color:blue;
+        }
+        .important {
+            color:pink !important;
+        }
+
     </style>
 </head>
 <body>
     
     <p>태그선택자</p>
-    
+    <p class="class-style">클래스 선택자</p>
+    <p class="class-style class-style2 important">클래스 선택자2</p>
+    <p class="class-style class-style2 class-style3">클래스 선택자3</p>
+    <p id="id-style" class="class-style3">id 선택자</p>
+    </p>
 </body>
 </html>
