@@ -22,8 +22,8 @@
     <link rel="manifest" href="./site.webmanifest" />
 
     <style>
-        /* 폰트 변경은 이곳에 font-family 형태로 하면 좋음 */
-        /*
+      /* 폰트 변경은 이곳에 font-family 형태로 하면 좋음 */
+      /*
          h1,
          h2,
          h3,
@@ -32,14 +32,41 @@
          h6 { font-family: " sans-serif;"
           }
          의 형태로 지정 가능 */
-         
-         /* 웹폰트 사용시 복사 붙여넣기 해서
+
+      /* 웹폰트 사용시 복사 붙여넣기 해서
          import url (""); 형태 복사해온 후
          body {
           font-family : "복사해온 웹폰트명"; 
          } 
         의 형태로 저장
          */
+      @font-face {
+        font-family: "Cafe24Surround";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff")
+          format("woff");
+        font-weight: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "KkuBulLim";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2410-1@1.0/BMkkubulimTTF-Regular.woff2")
+          format("woff2");
+        font-weight: normal;
+        font-display: swap;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Cafe24Surround";
+      }
+
+      strong {
+        font-family: "KkuBulLim";
+      }
     </style>
   </head>
   <body>
@@ -49,6 +76,5 @@
 
     <br />
     <br />
-    
   </body>
 </html>
